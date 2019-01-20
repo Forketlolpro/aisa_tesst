@@ -1,28 +1,45 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header v-on:profile="onProfileClick"></Header>
+    <Main v-bind:profile-stat="see"></Main>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Main from "./components/Main";
 
 export default {
   name: 'app',
+  data: () => {return{see: true}},
+  methods: {
+    onProfileClick: function (data) {
+      this.see=data;
+    }
+  },
   components: {
-    HelloWorld
+    Main,
+    Footer,
+    Header
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  body {
+    margin: 0;
+  }
+  #app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    @media screen and (min-width: 1200px) {
+      width: 1200px;
+      margin: 0 auto;
+    }
 }
 </style>
