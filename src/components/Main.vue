@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <Content v-if="!profileStat"></Content>
-        <Profile v-if="profileStat"></Profile>
+        <Profile @showm="$emit('showm')" v-if="profileStat"></Profile>
     </div>
 </template>
 
@@ -20,7 +20,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .main {
         flex-grow: 1;
         display: flex;

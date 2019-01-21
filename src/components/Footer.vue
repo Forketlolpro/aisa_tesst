@@ -10,7 +10,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .footer {
         display: flex;
         align-items: center;

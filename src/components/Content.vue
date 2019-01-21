@@ -15,7 +15,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .content {
         display: flex;
         flex-wrap: wrap;
@@ -25,7 +25,12 @@
 
     .content-elem {
         border: 1px solid black;
-        width: 360px;
-        height: 160px;
+        min-width: 320px;
+        height: 140px;
+        box-sizing: border-box;
+
+        @media screen and (max-width: 768px){
+            margin-bottom: 10px;
+        }
     }
 </style>

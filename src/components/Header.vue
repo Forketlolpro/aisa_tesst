@@ -3,6 +3,7 @@
         <div class="home">HOME</div>
         <div class="nav-item logo">LOGO</div>
         <div class="nav-item nickname" @click='showProfile'>NICKNAME</div>
+        <div class="nav-item showModal" @click="$emit('showm')">SHOWMODAL</div>
         <div v-bind:class="{change: isResponsive }" class="container icon" v-on:click="myFunction()">
             <div class="bar1"></div>
             <div class="bar2"></div>
@@ -25,6 +26,7 @@
             showProfile () {
                 this.profilestat = !(this.profilestat === true);
                 this.$emit('profile', this.profilestat);
+                this.isResponsive=!(this.isResponsive === true);
             },
 
             myFunction () {
@@ -34,7 +36,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .header {
         display: flex;
         justify-content: space-between;
@@ -75,27 +77,56 @@
         display: none;
     }
 
-    @media screen and (max-width: 600px) {
+    .showModal {
+        display: none;
+    }
+
+    @media screen and (max-width: 768px) {
         .header .icon, .header .home {
             display: block;
         }
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 768px) {
+        .header {
+            .nav-item {
+                display: none;
+            }
+        }
         .header.responsive {
             position: relative;
+            .nav-item {
+                display: block;
+                height: 52px;
+                background-color: white;
+                width: 100%;
+
+                &:hover {
+                    background-color: gainsboro;
+                    cursor: pointer;
+                }
+            }
         }
         .header.responsive .nav-item.logo {
             position: absolute;
             left: 0;
-            top: 52px;
+            top: 51px;
         }
 
         .header.responsive .nav-item.nickname {
             position: absolute;
             left: 0;
-            top: 104px;
+            top: 103px;
+            border-bottom: 1px solid gainsboro;
         }
+
+        .header.responsive .nav-item.showModal {
+            position: absolute;
+            left: 0;
+            top: 153px;
+            border-bottom: 1px solid gainsboro;
+        }
+
         .topnav.responsive .nav-item{
             float: none;
             display: block;
